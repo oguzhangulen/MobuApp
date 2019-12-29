@@ -1,0 +1,25 @@
+<h1 mat-dialog-title>Login</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.UserName" required placeholder="Username" style="max-height: 30px;">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.Password" required placeholder="Password" style="max-height: 30px;" type="password">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.CityName" required placeholder="City" style="max-height: 30px;">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.Ad" required placeholder="Name" style="max-height: 30px;">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.Soyad" required placeholder="Surname" style="max-height: 30px;">
+  </mat-form-field>
+  <mat-form-field>
+    <input [(ngModel)]="data.Birthday" required placeholder="Birthday" type="date" style="max-height: 30px;">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Vazgeç</button>
+  <button mat-button [mat-dialog-close]="data">Ok</button>
+</div>

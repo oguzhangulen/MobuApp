@@ -1,25 +1,41 @@
-<h1 mat-dialog-title>Login</h1>
+<h1 mat-dialog-title>Register</h1>
 <div mat-dialog-content>
   <mat-form-field>
-    <input matInput [(ngModel)]="data.UserName" required placeholder="Username" style="max-height: 30px;">
+    <input matInput [(ngModel)]="data.UserName" placeholder="Username">
   </mat-form-field>
   <mat-form-field>
-    <input matInput [(ngModel)]="data.Password" required placeholder="Password" style="max-height: 30px;" type="password">
+    <input matInput [(ngModel)]="data.Password" placeholder="Password" type="password">
+  </mat-form-field>
+  <!-- <mat-form-field>
+    <input matInput [(ngModel)]="data.CityName" placeholder="City">
+  </mat-form-field> -->
+  <mat-form-field>
+    <mat-select [(ngModel)]="data.CityName">
+      <mat-option *ngFor="let city of cities" [value]="city.name" aria-placeholder="city.name">
+        {{city.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <!-- <mat-form-field>
+    <mat-select [placeholder]="CityName" [(ngModel)]="data.CityName" (blur)="onBlur()" class="select-country-main">
+      <ng-template ngFor let-city [ngForOf]="cities" [ngForTrackBy]="trackByCityId">
+        <mat-option *ngIf="!isExcluded(city)" [value]="city.Name">
+        </mat-option>
+      </ng-template>
+    </mat-select>
+  </mat-form-field> -->
+
+  <!-- <mat-form-field>
+    <input matInput [(ngModel)]="data.Ad" placeholder="Name">
   </mat-form-field>
   <mat-form-field>
-    <input matInput [(ngModel)]="data.CityName" required placeholder="City" style="max-height: 30px;">
+    <input matInput [(ngModel)]="data.Soyad" placeholder="Surname">
   </mat-form-field>
   <mat-form-field>
-    <input matInput [(ngModel)]="data.Ad" required placeholder="Name" style="max-height: 30px;">
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput [(ngModel)]="data.Soyad" required placeholder="Surname" style="max-height: 30px;">
-  </mat-form-field>
-  <mat-form-field>
-    <input [(ngModel)]="data.Birthday" required placeholder="Birthday" type="date" style="max-height: 30px;">
-  </mat-form-field>
+    <input [(ngModel)]="data.Birthday" placeholder="Birthday" type="date">
+  </mat-form-field> -->
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Vazgeç</button>
-  <button mat-button [mat-dialog-close]="data">Ok</button>
+  <button mat-button [mat-dialog-close]="data">Kayıt Ol</button>
 </div>

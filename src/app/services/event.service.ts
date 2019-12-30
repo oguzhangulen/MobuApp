@@ -25,42 +25,55 @@ export class EventService {
     return this.httpClient.get<Event[]>(this.path+"Event");
   }
   getEventById(eventid:number):Observable<Event>{
-    return this.httpClient.get<Event>(this.path+"Event/?id="+eventid)
+    return this.httpClient.get<Event>(this.path+"Event/"+eventid)
   }
 
   //TO DO: AddSolution, getEventByUserId 
-  addEvent(event:Event)
+  addEvent(getevent:Event)
   {
-    this.httpClient.post(this.path+'Event/add',event).subscribe(data=>{
+    this.httpClient.post(this.path+'Event/add/',getevent).subscribe(data=>{
       this.alertifyService.success("Paylaşıldı..")
-      this.rooter.navigateByUrl('/eventDetail/'+data["id"])
+      window.location.reload();
     })
   }
-  updateEvent(event:Event)
+  updateEvent(getevent:any)
   {
-    this.httpClient.put(this.path+'Event/update',event).subscribe(data=>{
+    console.log(getevent);
+    this.httpClient.post(this.path+'Event/update/',getevent).subscribe(data=>{
       this.alertifyService.warning("Güncellendi..")
       this.rooter.navigateByUrl('/event')
     })
   }
-  deleteEvent(event:Event)
+  deleteEvent(getevent:Event)
   {
-    this.httpClient.post(this.path+'Event/delete',event).subscribe(data=>{
+    this.httpClient.post(this.path+'Event/delete/',getevent).subscribe(data=>{
       this.alertifyService.warning("Paylaşımınız kaldırıldı..")
-      this.rooter.navigateByUrl('/event')
+      window.location.reload();
     })
   }
   addComment(comment:Comments)
   {
+    console.log("service"+comment);
+
     this.httpClient.post(this.path+'Comments/add',comment).subscribe(data=>{
+      debugger;;
       this.alertifyService.success('Yorum eklendi..')
-      this.rooter.navigateByUrl('eventDetail/'+data["EventId"])
+      window.location.reload();
+      // this.rooter.navigateByUrl('/event')
     })
   }
   deleteComment(comment:Comments)
   {
-    this.httpClient.post(this.path+'Comment/delete?id=',comment.id).subscribe(data=>{
-      this.alertifyService.warning("Yorumunuz kaldırıldı..")
+    this.httpClient.post(this.path+'Comment/delete/',comment.id).subscribe(data=>{
     })
+    this.alertifyService.warning("Yorumunuz kaldırıldı..")
   }
+  GetEventsByUserId(userid:any):Observable<Event[]>
+  {
+    console.log(userid);
+    return this.httpClient.get<Event[]>(this.path+"Event/userevent?id="+userid);
+  }
+  // getEventById(eventid:number):Observable<Event>{
+  //   return this.httpClient.get<Event>(this.path+"Event/"+eventid)
+  // }
 }

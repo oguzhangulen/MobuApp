@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="/event"><span>MobuSmartCity</span></a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+  <a class="navbar-brand" href="/event"><span style="color: #673AB7; font-size: x-large;">MobuSmartCity</span></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -26,11 +26,11 @@
         [(ngModel)]="userForLogin.password" required type="password" placeholder="Password">
       </form> -->
       <!-- *ngIf="!isAuthenticated" -->
-      <button *ngIf="isAuthenticated" mat-raised-button (click)="openLoginDialog()" type="submit" class="btn btn-outline-primary">Login</button>
-      <button *ngIf="isAuthenticated" mat-raised-button color="accent" (click)="openRegisterDialog()" type="button" class="btn btn-primary ml-3">SignUp</button>
-      <button mat-icon-button [matMenuTriggerFor]="menu" type="submit" *ngIf="!isAuthenticated"><i class="fa fa-user"></i></button>
+      <button *ngIf="isAuthenticated()" mat-raised-button (click)="openLoginDialog()" type="submit" class="btn btn-outline-primary">Login</button>
+      <button *ngIf="isAuthenticated()" mat-raised-button color="accent" (click)="openRegisterDialog()" type="button" class="btn btn-primary ml-3">SignUp</button>
+      <button class="mr-3" mat-stroked-button color="primary" [matMenuTriggerFor]="menu" type="submit" *ngIf="!isAuthenticated()"><span style="font-size: large; margin-right: 10px;">{{loginUsername}}</span>  <i class="fa fa-user fa-3x"></i></button>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item href="/profile">Profil</button>
+        <button mat-menu-item routerLink="/profile">Profil</button>
         <button mat-menu-item type="submit" (click)="logOut()">Çıkış Yap</button>
       </mat-menu>
     </form>
